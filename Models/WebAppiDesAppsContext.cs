@@ -46,10 +46,6 @@ public partial class WebAppiDesAppsContext : DbContext
             entity.ToTable("USUARIOS");
 
             entity.Property(e => e.IdUsuario).HasColumnName("idUsuario");
-            entity.Property(e => e.ApellidoUsuario)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("apellidoUsuario");
             entity.Property(e => e.DireccionUsuario)
                 .HasMaxLength(50)
                 .IsUnicode(false)
