@@ -14,9 +14,6 @@ public partial class WebAppiDesAppsContext : DbContext
         : base(options)
     {
     }
-
-    public virtual DbSet<Tipo> Tipos { get; set; }
-
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -26,18 +23,6 @@ public partial class WebAppiDesAppsContext : DbContext
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Tipo>(entity =>
-        {
-            entity.HasKey(e => e.IdTipo).HasName("PK__TIPO__BDD0DFE16F0BAE58");
-
-            entity.ToTable("TIPO");
-
-            entity.Property(e => e.IdTipo).HasColumnName("idTipo");
-            entity.Property(e => e.Descripcion)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("descripcion");
-        });
 
         modelBuilder.Entity<Usuario>(entity =>
         {
@@ -54,7 +39,6 @@ public partial class WebAppiDesAppsContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("emailUsuario");
-            entity.Property(e => e.IdTipo).HasColumnName("idTipo");
             entity.Property(e => e.NombreUsuario)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -63,10 +47,10 @@ public partial class WebAppiDesAppsContext : DbContext
                 .HasMaxLength(15)
                 .IsUnicode(false)
                 .HasColumnName("telefonoUsuario");
-
-            entity.HasOne(d => d.IdTipoNavigation).WithMany(p => p.Usuarios)
-                .HasForeignKey(d => d.IdTipo)
-                .HasConstraintName("FK_idTipo");
+            entity.Property(e => e.FechaConsulta)
+                .HasMaxLength(15)
+                .IsUnicode(false)
+                .HasColumnName("fechaconsulta");
         });
 
         OnModelCreatingPartial(modelBuilder);

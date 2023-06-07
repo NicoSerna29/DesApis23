@@ -9,15 +9,13 @@ public partial class Usuario
 
     public string? NombreUsuario { get; set; }
 
-    public string? ApellidoUsuario { get; set; }
+    public string? Descripcion { get; set; }
 
     public string? EmailUsuario { get; set; }
 
-    public string? TelefonoUsuario { get; set; }
+    public long? TelefonoUsuario { get; set; }
 
     public string? DireccionUsuario { get; set; }
 
-    public int? IdTipo { get; set; }
-
-    public virtual Tipo? IdTipoNavigation { get; set; }
+    public DateTime? FechaConsulta { get; set; }
 }
